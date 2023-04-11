@@ -1,0 +1,65 @@
+in a file -
+rule:
+    A->B
+
+pattern match rule:
+    A,B->C,D
+    // both A and B must be present to be rewritten as C and D respectively
+    "xxAxBx" -> "xxCxDx"
+
+multiway pattern match rule:
+    // both A and B must be present to be rewritten as C
+    // C is substituted in all places
+    A,B->C
+    "A x A x x B x"
+    |C|       | | -> "C x A x x x"
+    | |       |C| -> "x A x x C x"
+        |C|   | | -> "A x C x x x"
+        | |   |C| -> "A x x x C x"
+
+    "A,B->,C"
+    "xAxBxx" -> "xxCxx"
+    "A,B->C,"
+    "xAxBxx" -> "xCxxx"
+
+multiway pattern replace rule:
+    A->B,C
+    "xxAx" -> "xxBx"
+    "xxAx" -> "xxCx"
+
+bidirectional rule:
+    A<->B
+    // equivalent to
+    A->B
+    B->A
+
+find pattern match rule:
+    A,B->C
+    // equivalent to
+    A->C
+    B->C
+
+pattern match rule:
+    A,B->C,D
+    // equivalent to
+    A->C
+    A->D
+    B->C
+    B->D
+
+bidirectional pattern match rule:
+    A,B<->C,D
+    // equivalent to
+    A,B->C,D
+    C,D->A,B
+    // equivalent to
+    A->C
+    A->D
+    B->C
+    B->D
+    C->A
+    C->B
+    D->A
+    D->B
+
+AbsfdrdtbAfdsdfsA
