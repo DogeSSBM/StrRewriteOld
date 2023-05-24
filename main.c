@@ -157,15 +157,18 @@ RuleList* parseArrow(const char *str, RuleList *list)
     char *arrow = strstr(str, "<->");
     if(arrow == NULL)
         return parseSingleArrow(str, list);
+
     if(strstr(arrow+1, "<->")!=NULL){
         printf("Error parsing \"%s\".\nEquivalence rules must have only one \"<->\"\n", str);
         exit(-1);
     }
+
     char *singleArrow = strstr(str, "->");
     if(singleArrow != arrow+1 || strstr(arrow+2, "->")){
         printf("Error parsing \"%s\".\nRules can only contain\"<->\" or \"->\" not both\n", str);
         exit(-1);
     }
+
     uint flen = arrow-str;
     char *find1 = malloc(flen+1);
     char *replace1 = malloc(strlen(arrow+3)+1);
