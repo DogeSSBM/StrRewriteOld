@@ -343,11 +343,14 @@ int main(int argc, char **argv)
 {
     RuleSet rs = parseRuleSet(argc, argv);
     printRuleSet(rs);
+
     NodeList *list = calloc(1, sizeof(NodeList));
     list->node = calloc(1, sizeof(Node));
     list->node->str = strdup(argv[argc-1]);
+
     list = rewrite(list->node, rs, list);
     printNormalForms(list, rs);
+
     freeList(list);
     freeRuleSet(rs);
 
