@@ -301,6 +301,7 @@ NodeList* rewrite(Node *n, const RuleSet rs, NodeList *list)
     createOccurances(n, rs);
     n->child = calloc(n->totalOccurances, sizeof(Node*));
     uint current = 0;
+
     for(uint i = 0; i < rs.numRules; i++){
         for(uint j = 0; j < n->ruleOccurances[i]; j++){
             char *newstr = replaceN(n->str, rs.rule[i].find, rs.rule[i].replace, j);
@@ -317,6 +318,7 @@ NodeList* rewrite(Node *n, const RuleSet rs, NodeList *list)
         }
         current+=n->ruleOccurances[i];
     }
+
     if(current != n->totalOccurances){
         printf("Total child nodes generated != n->totalOccurances\n");
         exit(-1);
