@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TYPES_H
+#define TYPES_H
+
 typedef FILE                File;
 
 typedef long int            lint;
@@ -31,3 +33,5 @@ typedef int64_t             i64;
 #define U32MAX              UINT32_MAX
 #define U64MAX              UINT64_MAX
 #define PI                  M_PI
+
+#endif /* end of include guard: TYPES_H */

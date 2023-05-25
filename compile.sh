@@ -1,6 +1,5 @@
 #!/bin/sh
-printf "\033c"
-libraries="-lm"
-flags="-Wall -Wno-missing-braces"
-# -O3 -Winline"
-gcc main.c $libraries $flags -o main.out
+clear
+flags="-std=c11 -Wall -Wextra -Wpedantic -Werror -g"
+# flags="-std=c11 -Wall -Wextra -Wpedantic -Werror -O3"
+cc main.c $flags -o main.out
